@@ -2,29 +2,14 @@
 	<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.1 xliff-core-schema-1.1.xsd">
     	<file datatype="plaintext" original="" source-language="en-US" target-language="zh-CN">
         	<body>
-        <trans-unit approved="no" id="1" extradata="navigation.constants.logout" xml:space="preserve">
-	      <source xml:lang="en-US">Client ID</source>
-	      <target xml:lang="zh-CN">こん</target>
-	   </trans-unit>
-       <trans-unit approved="no" id="2" extradata="login.label.username" xml:space="preserve">
+       <trans-unit approved="no" id="form.label.username" extradata="" xml:space="preserve">
 	      <source xml:lang="en-US">Username</source>
 	      <target xml:lang="zh-CN">んにち</target>
 	   </trans-unit>
-       <trans-unit approved="no" id="3" extradata="heading.password" xml:space="preserve">
+       <trans-unit approved="no" id="form.label.password" extradata="" xml:space="preserve">
 	      <source xml:lang="en-US">Password</source>
 	      <target xml:lang="zh-CN">こんにちは</target>
 	   </trans-unit>
-        <trans-unit approved="no" id="4" extradata="label.login_name" xml:space="preserve">
-	      <source xml:lang="en-US">Login</source>
-	      <target xml:lang="zh-CN">こんちこんにちは</target>
-	   </trans-unit>
-       <trans-unit approved="no" id="5" extradata="label.acct_locked" xml:space="preserve">
-	      <source xml:lang="en-US">Account Locked. Please contact your local administrator.</source>
-	      <target xml:lang="zh-CN">こんにちは こん</target>
-	   </trans-unit>
-            
         </body>
-        
     </file>
-    
 </xliff>
