@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IResource.cs" />
+    <Compile Include="Resource.cs" />
     <Compile Include="XliffParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

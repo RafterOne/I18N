@@ -56,12 +56,17 @@ namespace PixelMEDIA.I18N
 						}
 					}
 				}
+
+				Resource res = new Resource();
+
+				res.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget);
+
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
-
+			
 		}
 
 		private static StreamWriter CreateOutputStream(string path, string language)
