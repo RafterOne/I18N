@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XliffParser", "XliffParser.csproj", "{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XliffParser", "XliffParser\XliffParser.csproj", "{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
