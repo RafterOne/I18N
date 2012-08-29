@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using System.Resources;
 
-namespace PixelMEDIA.I18N
+namespace I18N
 {
 	interface IResource
 	{

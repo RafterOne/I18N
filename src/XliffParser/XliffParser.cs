@@ -6,9 +6,9 @@ using System.Xml.Linq;
 using System.Xml;
 using System.IO;
 
-namespace PixelMEDIA.I18N
+namespace I18N
 {
-	class XliffParser
+	public class XliffParser
 	{
 		private static string FILENAME_PREFIX = "ApplicationResources_";
 		private static string FILENAME_SUFFIX = ".properties";

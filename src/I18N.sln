@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XliffParser", "XliffParser\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EF358239-BA99-4828-B3AF-1A9BD8C442AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I18N.Test", "I18N.Tests\I18N.Test.csproj", "{D544DA0E-42FC-40C5-BA62-02697FC62C48}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "I18N", "I18N", "{E051C7B6-1CBF-4D46-9A41-6D084A9F7A7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I18N.Test", "I18N.Test\I18N.Test.csproj", "{D544DA0E-42FC-40C5-BA62-02697FC62C48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,7 @@ using System.Resources;
 using System.Text;
 using System.Xml.Linq;
 
-namespace PixelMEDIA.I18N
+namespace I18N
 {
 	public class Resource : IResource
 	{
