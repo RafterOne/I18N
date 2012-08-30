@@ -8,7 +8,7 @@ namespace I18N
 {
 	public class Resource : IResource
 	{
-		private const string FILENAME_SUFFIX = ".resx";
+		private const string FILENAME_SUFFIX = ".resources";
 
 		public void Write(
 			ref XDocument doc, 
@@ -47,6 +47,8 @@ namespace I18N
 					// Adds resources to the resource writer.
 					writer.AddResource(key, value.ToString());
 				}
+
+				writer.Generate();
 			}
 		
 		}
