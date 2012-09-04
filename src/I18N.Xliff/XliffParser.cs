@@ -6,14 +6,13 @@ using System.Xml.Linq;
 using System.Xml;
 using System.IO;
 
-namespace I18N
+namespace I18N.Xliff
 {
 	using I18N.Format;
 
 	public class XliffParser
 	{
 		private static string FILENAME_PREFIX = "ApplicationResources_";
-		//private static string FILENAME_SUFFIX = ".properties";
 		private static string NODE_FILE = "file";
 		private static string NODE_TRANS_UNIT = "trans-unit";
 		private static string NODE_TARGET = "target";
