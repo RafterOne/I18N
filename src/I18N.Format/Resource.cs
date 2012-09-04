@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml.Linq;
 using System;
 
-namespace I18N
+namespace I18N.Format
 {
 	public class Resource : IResource
 	{

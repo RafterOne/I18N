@@ -8,6 +8,8 @@ using System.IO;
 
 namespace I18N
 {
+	using I18N.Format;
+
 	public class XliffParser
 	{
 		private static string FILENAME_PREFIX = "ApplicationResources_";

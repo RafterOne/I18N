@@ -1,7 +1,7 @@
 ﻿using System.Xml.Linq;
 using System.Resources;
 
-namespace I18N
+namespace I18N.Format
 {
 	interface IResource
 	{

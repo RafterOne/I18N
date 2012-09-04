@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.IO;
 using System;
 
-namespace I18N
+namespace I18N.Format
 {
 	public class Property : IProperty
 	{

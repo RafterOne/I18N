@@ -2,7 +2,7 @@
 using System.Resources;
 using System.IO;
 
-namespace I18N
+namespace I18N.Format
 {
 	interface IProperty
 	{

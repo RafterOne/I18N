@@ -44,10 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PropertyBehavior.cs" />
+    <Compile Include="ResourceBehavior.cs" />
     <Compile Include="XliffParserBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\I18N.Format\I18N.Format.csproj">
+      <Project>{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66}</Project>
+      <Name>I18N.Format</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XliffParser\XliffParser.csproj">
       <Project>{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}</Project>
       <Name>XliffParser</Name>

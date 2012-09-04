@@ -43,10 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IProperty.cs" />
-    <Compile Include="IResource.cs" />
-    <Compile Include="Property.cs" />
-    <Compile Include="Resource.cs" />
     <Compile Include="XliffParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +53,12 @@
     <Content Include="ChineseXliff.xml">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\I18N.Format\I18N.Format.csproj">
+      <Project>{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66}</Project>
+      <Name>I18N.Format</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
