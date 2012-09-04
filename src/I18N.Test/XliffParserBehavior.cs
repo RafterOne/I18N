@@ -29,14 +29,12 @@ namespace I18N.Test
 		}
 
 		[Test]
-		public void ResourceObjectIsUsable()
+		public void CanWriteAndReadFrenchLanguageResourceFile()
 		{
 			string prefix = "ApplicationResources_";
 			string id = "id";
 
 			XDocument doc = XDocument.Load("../../../XliffParser/FrenchXliff.xml");
-			//NEED TO GET THE LANGUAGE FOR THE OUTPUT FILE NAME
-			
 			string nameSpace = doc.Root.GetDefaultNamespace().NamespaceName;
 			XName xfile = XName.Get("file", nameSpace);
 			string language = doc.Descendants(xfile).FirstOrDefault().Attribute("target-language").Value.ToString();

@@ -11,7 +11,7 @@ namespace I18N
 	public class XliffParser
 	{
 		private static string FILENAME_PREFIX = "ApplicationResources_";
-		private static string FILENAME_SUFFIX = ".properties";
+		//private static string FILENAME_SUFFIX = ".properties";
 		private static string NODE_FILE = "file";
 		private static string NODE_TRANS_UNIT = "trans-unit";
 		private static string NODE_TARGET = "target";
@@ -40,26 +40,11 @@ namespace I18N
 
 				string outputPath = args[0].Substring(0, args[0].LastIndexOf("\\") + 1);
 
-				using (StreamWriter writer = CreateOutputStream(outputPath, language))
-				{
-
-					IEnumerable<XElement> de =
-						from el in doc.Descendants(xname)
-						select el;
-					foreach (XElement el in de)
-					{
-						writer.Write(el.Attribute(ATTRIBUTE_ID).Value);
-						writer.Write("=");
-						foreach (XElement exl in el.Descendants(xtarget))
-						{
-							writer.WriteLine(exl.Value);
-						}
-					}
-				}
-
 				Resource res = new Resource();
+				Property pro = new Property();
 
 				res.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget);
+				pro.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget);
 
 			}
 			catch (Exception e)
@@ -68,30 +53,6 @@ namespace I18N
 			}
 			
 		}
-
-		private static StreamWriter CreateOutputStream(string path, string language)
-		{
-			string fileName = FILENAME_PREFIX + language + FILENAME_SUFFIX;
-			return File.CreateText(path + fileName);
-		}
-
-		/* Sample XLIFF file as input
-		<?xml version="1.0" encoding="UTF-8" ?>
-		<xliff version="1.1" xmlns="urn:oasis:names:tc:xliff:document:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.1 xliff-core-schema-1.1.xsd">
-			<file datatype="plaintext" original="" source-language="en-US" target-language="zh-CN">
-			<body>
-				<trans-unit approved="no" id="form.label.username" extradata="" xml:space="preserve">
-					<source xml:lang="en-US">Username</source>
-					<target xml:lang="zh-CN">んにち</target>
-				</trans-unit>
-					<trans-unit approved="no" id="form.label.password" extradata="" xml:space="preserve">
-					<source xml:lang="en-US">Password</source>
-					<target xml:lang="zh-CN">こんにちは</target>
-				</trans-unit>
-			</body>
-			</file>
-		</xliff>
-		*/
 	}
 
 }

@@ -3,17 +3,18 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
 using System;
 
 namespace I18N
 {
-	public class Resource : IResource
+	public class Property : IProperty
 	{
-		private const string FILENAME_SUFFIX = ".resources";
+		private const string FILENAME_SUFFIX = ".properties";
 
 		public void Write(
-			ref XDocument doc, 
-			string outputPath, 
+			ref XDocument doc,
+			string outputPath,
 			string language,
 			ref string FILENAME_PREFIX,
 			ref string ATTRIBUTE_ID,
@@ -23,10 +24,9 @@ namespace I18N
 		{
 			try
 			{
-				// Creates a resource writer. This provides a default implementation
-				// of the IResourceWriter interface. It enables you to programmatically
-				// create a binary resource (.resources) file.
-				using (ResourceWriter writer = Create(
+				// Basic file writing stream iterating the xml and output to
+				// file as key=value pairs.
+				using (StreamWriter writer = Create(
 					outputPath,
 					language,
 					FILENAME_PREFIX
@@ -36,39 +36,32 @@ namespace I18N
 					IEnumerable<XElement> de =
 						from el in doc.Descendants(xname)
 						select el;
-
 					foreach (XElement el in de)
 					{
-						string key = el.Attribute(ATTRIBUTE_ID).Value;
-						StringBuilder value = new StringBuilder();
-
+						writer.Write(el.Attribute(ATTRIBUTE_ID).Value);
+						writer.Write("=");
 						foreach (XElement exl in el.Descendants(xtarget))
 						{
-							value.AppendLine(exl.Value);
+							writer.WriteLine(exl.Value);
 						}
-
-						// Adds resources to the resource writer.
-						writer.AddResource(key, value.ToString());
 					}
-
-					writer.Generate();
 				}
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
+
 		}
 
-		public ResourceWriter Create(
-			string path, 
-			string language, 
+		public StreamWriter Create(
+			string path,
+			string language,
 			string prefix
-		)
+			)
 		{
 			string fileName = prefix + language + FILENAME_SUFFIX;
-			return new ResourceWriter(path + fileName);
+			return File.CreateText(path + fileName);
 		}
-
 	}
 }
