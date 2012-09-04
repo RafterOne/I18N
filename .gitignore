@@ -98,5 +98,6 @@ UpgradeLog*.XML
 # Project Specific files such as *.xlf, *.resx, and *.properties
 *.properties
 *.resx
+*.resources
 *.xlf
 
