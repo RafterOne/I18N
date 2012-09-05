@@ -101,3 +101,8 @@ UpgradeLog*.XML
 *.resources
 *.xlf
 
+# NAnt folders
+[Dd]eploy/
+[Bb]uild/
+
+
