@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<project name="I18N" default="go">
+	<property name="project.name" value="I18N" />
+	<property name="base.dir" value="${project::get-base-directory()}" />
+	<property name="source.dir" value="${base.dir}\src" />
+	<property name="package.dir" value="${base.dir}\build" />
+	<property name="tools.dir" value="${base.dir}\tools" />
+	<property name="reporting.dir" value="${base.dir}\test-reports" />
+	<property name="coverage.xml" value="NCover.xml" />
+
+	<property name="path.nunit.console" value="${tools.dir}\nunit\nunit-console.exe" />
+	<property name="path.ncover" value="C:\Program Files\NCover" />
+	<property name="path.ncover.console" value="${path.ncover}\NCover.Console.exe" />
+	<property name="path.ncoverexplorer.console" value="${path.ncover}\NCoverExplorer.Console.exe" />
+
+	<property name="configuration" value="Debug" unless="${property::exists('configuration')}" />
+	<property name="dotnet" value="C:\Windows\Microsoft.NET\Framework\v4.0.30319\" />
+
+	<target name="go" depends="build" />
+	<target name="ci" depends="reporting" />
+
+	<target name="clean">
+		<delete dir="${package.dir}" if="${directory::exists(package.dir)}" failonerror="false" />
+
+		<!-- call msbuild to clean the solution before building -->
+		<exec program="${dotnet}msbuild.exe" managed="true">
+			<arg value="src\${project.name}.sln"/>
+			<arg value="/t:Clean" />
+		</exec>
+	</target>
+    
+    <target name="build">
+        <call target="clean" unless="${target::has-executed('clean')}" />
+        
+        <exec program="${dotnet}msbuild.exe">
+			<arg value="${source.dir}\I18N.Format\I18N.Format.csproj"/>
+			<arg value="/t:Rebuild" />
+			<arg value="/p:Configuration=${configuration}"/>
+		</exec>
+        
+        <exec program="${dotnet}msbuild.exe">
+			<arg value="${source.dir}\I18N.Test\I18N.Test.csproj"/>
+			<arg value="/t:Rebuild" />
+			<arg value="/p:Configuration=${configuration}"/>
+		</exec>
+        
+        <exec program="${dotnet}msbuild.exe">
+			<arg value="${source.dir}\I18N.Xliff\I18N.Xliff.csproj"/>
+			<arg value="/t:Rebuild" />
+			<arg value="/p:Configuration=${configuration}"/>
+		</exec>
+        
+	</target>
+
+	<target name="ci-server-test-setup" description="Sets up build server to properly execute unit tests.">
+		<!--copy
+			file="${source.dir}\Tests.Unit\BUILDSERVER-App.config"
+			tofile="${source.dir}\Tests.Unit\App.config"
+			overwrite="true"
+			/-->
+	</target>
+
+	<target name="reporting" description="Runs various code analysis reports">
+		<call target="build" unless="${target::has-executed('build')}" />
+
+		<exec program="${dotnet}msbuild.exe">
+			<arg value="${source.dir}\${project.name}.Tests.Controls\${project.name}.Tests.csproj"/>
+			<arg value="/t:Rebuild" />
+			<arg value="/p:Configuration=${configuration}"/>
+		</exec>
+
+		<!-- Necessary if you do not have the NCoverExplorer assembly in your NAnt folders. -->
+		<loadtasks assembly="${path.ncover}\Build Task Plugins\NCoverExplorer.NAntTasks.dll" if="${environment::get-machine-name() == 'GALEHEAD'}" />
+
+		<mkdir dir="${reporting.dir}" />
+
+		<call target="unit-tests"/>
+		<call target="code-coverage" if="${environment::get-machine-name() == 'GALEHEAD'}" />
+		<call target="simian" />
+		<!--call target="fxcop" /-->
+	</target>
+
+	<target name="unit-tests" description="Runs unit tests">
+		<echo message="TODO: Setup unit-tests target" />
+	</target>
+
+	<target name="fxcop" description="Runs FxCop on complied assemblies">
+		<echo message="TODO: Setup fxcop target" />
+		<!--exec program="tools\fxcop\fxcopcmd.exe" commandline="/p:I18N.FxCop /o:test-reports\FxCop.xml" failonerror="false"/-->
+	</target>
+
+	<target name="simian" description="Finds duplicate code">
+		<echo message="TODO: Setup simian target" />
+
+		<!--exec program="tools\simian\simian.exe">
+			<arg value="-recurse=*.cs"/>
+			<arg value="-failOnDuplication-"/>
+			<arg value="-formatter=xml:test-reports\Simian.xml"/>
+		</exec-->
+	</target>
+
+	<target name="code-coverage" description="Generates a code coverage report">
+
+		<echo message="TODO: Setup code-coverage target" />
+
+		<!--<ncover
+			registerProfiler="false"
+			program="${path.ncover.console}" 
+			commandLineExe="${path.nunit.console}"
+			commandLineArgs="${project.name}.Tests.Unit.dll /xml:${reporting.dir}\Tests.Unit.xml /labels /nologo /noshadow"
+			coverageFile="${reporting.dir}\Coverage-Core.xml"
+			logLevel="Verbose"
+			logFile="${reporting.dir}\${project.name}.Tests.Unit.log"
+			workingDirectory="${source.dir}\Tests.Unit\bin\${configuration}">
+			<assemblies basedir="${source.dir}\Core\bin\${configuration}">
+				<include name="${project.name}.Core.dll"/>
+			</assemblies>
+		</ncover>
+
+		<ncoverexplorer
+			program="${path.ncoverexplorer.console}"
+			projectName="${project.name}"
+			outputDir="${reporting.dir}"
+			reportType="4"
+			satisfactoryCoverage="80"
+			xmlReportName="CoverageSummary.xml">
+			<fileset>
+				<include name="${reporting.dir}\Coverage-Core.xml" />
+			</fileset>
+			<moduleThresholds>
+				<moduleThreshold moduleName="${project.name}.Core.dll" satisfactoryCoverage="70" />
+			</moduleThresholds>
+		</ncoverexplorer-->
+	</target>
+
+	<target name="package">
+		<call target="build" unless="${target::has-executed('build')}" />
+
+		<mkdir dir="${package.dir}" />
+		
+		<copy todir="${package.dir}\">
+			<fileset basedir="${source.dir}\I18N.Xliff\Bin\${configuration}\">
+				<include name="**\*" />
+			</fileset>
+		</copy>
+        
+        <zip zipfile="${package.dir}\build.zip">
+           <fileset basedir="${package.dir}\">
+                <include name="**/*" />
+            </fileset>
+            <fileset basedir="${base.dir}\">
+                <include name="license.txt" />
+                <include name="README.md" />
+            </fileset>
+        </zip>
+        
+        <delete>
+            <fileset basedir="${package.dir}\">
+                <include name="**\*" />
+                <exclude name="**\*.zip" />
+            </fileset>
+        </delete>
+
+	</target>
+
+</project>

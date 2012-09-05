@@ -1,0 +1,1 @@
+go package -D:configuration=Release %*
