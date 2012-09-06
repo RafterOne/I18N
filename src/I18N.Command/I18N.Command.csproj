@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D544DA0E-42FC-40C5-BA62-02697FC62C48}</ProjectGuid>
+    <ProjectGuid>{BE7463A3-1480-4CF5-9714-3FA6165B4931}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>I18N.Test</RootNamespace>
-    <AssemblyName>I18N.Test</AssemblyName>
+    <RootNamespace>I18N.Command</RootNamespace>
+    <AssemblyName>I18N.Command</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.1.12217, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\tools\NUnit-2.6.1\bin\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,25 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArgumentBehavior.cs" />
-    <Compile Include="PropertyBehavior.cs" />
-    <Compile Include="ResourceBehavior.cs" />
-    <Compile Include="XliffParserBehavior.cs" />
+    <Compile Include="Argument.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\I18N.Command\I18N.Command.csproj">
-      <Project>{BE7463A3-1480-4CF5-9714-3FA6165B4931}</Project>
-      <Name>I18N.Command</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\I18N.Format\I18N.Format.csproj">
-      <Project>{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66}</Project>
-      <Name>I18N.Format</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\I18N.Xliff\I18N.Xliff.csproj">
-      <Project>{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}</Project>
-      <Name>I18N.Xliff</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

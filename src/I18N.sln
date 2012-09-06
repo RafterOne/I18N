@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{F413
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Output", "Output", "{D61635DF-75EC-4734-A215-2F32765C424C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I18N.Command", "I18N.Command\I18N.Command.csproj", "{BE7463A3-1480-4CF5-9714-3FA6165B4931}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,13 +55,23 @@ Global
 		{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}.Release|x86.ActiveCfg = Release|x86
 		{6AA230D7-C87D-43D7-B258-C8EE0C3103D4}.Release|x86.Build.0 = Release|x86
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BE7463A3-1480-4CF5-9714-3FA6165B4931}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D544DA0E-42FC-40C5-BA62-02697FC62C48} = {EF358239-BA99-4828-B3AF-1A9BD8C442AF}
-		{6AA230D7-C87D-43D7-B258-C8EE0C3103D4} = {F413923F-1A27-4294-98A6-7E742FA430AB}
 		{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66} = {D61635DF-75EC-4734-A215-2F32765C424C}
+		{6AA230D7-C87D-43D7-B258-C8EE0C3103D4} = {F413923F-1A27-4294-98A6-7E742FA430AB}
 	EndGlobalSection
 EndGlobal
