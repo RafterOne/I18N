@@ -55,6 +55,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\I18N.Command\I18N.Command.csproj">
+      <Project>{BE7463A3-1480-4CF5-9714-3FA6165B4931}</Project>
+      <Name>I18N.Command</Name>
+    </ProjectReference>
     <ProjectReference Include="..\I18N.Format\I18N.Format.csproj">
       <Project>{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66}</Project>
       <Name>I18N.Format</Name>

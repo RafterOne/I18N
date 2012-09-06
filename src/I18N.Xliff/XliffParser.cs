@@ -9,6 +9,7 @@ using System.IO;
 namespace I18N.Xliff
 {
 	using I18N.Format;
+	using I18N.Command;
 
 	public class XliffParser
 	{
@@ -19,40 +20,74 @@ namespace I18N.Xliff
 		private static string ATTRIBUTE_ID = "id";
 
 		/// <summary>
-		/// Reads an XLIFF file as input and generates a properties file for the language contained in the input file. 
-		/// If the input target language is zh-CN, the output file will be named ApplicationResources_zh-CN.properties
-		/// 
-		/// The output file is generated in the same directory as the input file
+		/// Reads an XLIFF file as input and generates a properties file for 
+		/// the language contained in the input file. If the input target 
+		/// language is zh-CN, the output file will be named 
+		/// ApplicationResources_zh-CN.properties. The output file is generated
+		/// in the same directory as the input file
 		/// </summary>
-		/// <param name="args">The only argument is the fully qualified input filename like C:\Test\XliffParser\TestXliff.xml</param>
+		/// <param name="args">Arguments are '--help', and '--xliff=' as the fully qualified input filename like C:\Test\XliffParser\TestXliff.xml</param>
 		static void Main(string[] args)
 		{
 			try
 			{
-				
-				XDocument doc = XDocument.Load(args[0]);
-				//NEED TO GET THE LANGUAGE FOR THE OUTPUT FILE NAME
-				string nameSpace = doc.Root.GetDefaultNamespace().NamespaceName;
-				XName xfile = XName.Get(NODE_FILE, nameSpace);
-				string language = doc.Descendants(xfile).FirstOrDefault().Attribute("target-language").Value.ToString();
+				// Command line parsing routine.
+				Argument commandLine = new Argument(args);
 
-				XName xname = XName.Get(NODE_TRANS_UNIT, nameSpace);
-				XName xtarget = XName.Get(NODE_TARGET, nameSpace);
+				if (!String.IsNullOrEmpty(commandLine["help"]) || args.Length == 0)
+				{
+					Help();
+				}
+				else {
 
-				string outputPath = args[0].Substring(0, args[0].LastIndexOf("\\") + 1);
+					if(!String.IsNullOrEmpty(commandLine["xliff"]))
+					{
+						XDocument doc = XDocument.Load(commandLine["xliff"]);
+						//NEED TO GET THE LANGUAGE FOR THE OUTPUT FILE NAME
+						string nameSpace = doc.Root.GetDefaultNamespace().NamespaceName;
+						XName xfile = XName.Get(NODE_FILE, nameSpace);
+						string language = doc.Descendants(xfile).FirstOrDefault().Attribute("target-language").Value.ToString();
 
-				Resource res = new Resource();
-				Property pro = new Property();
+						XName xname = XName.Get(NODE_TRANS_UNIT, nameSpace);
+						XName xtarget = XName.Get(NODE_TARGET, nameSpace);
 
-				res.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget);
-				pro.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget);
+						string outputPath = args[0].Substring(0, args[0].LastIndexOf("\\") + 1);
 
-			}
+						Resource res = new Resource();
+						Property pro = new Property();
+
+						// Write the resource file.
+						if (res.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget))
+						{
+							Console.WriteLine("[INFO]	Generated {0} resource file", language);
+						}
+
+						// Write the properties file.
+						if (pro.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget))
+						{
+							Console.WriteLine("[INFO]	Generated {0} properties file", language);
+						}
+					}
+				}
+
+			} 
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
-			
+		}
+
+		public static void Help()
+		{
+			Console.WriteLine("I18N v0.0.0.2");
+			Console.WriteLine("Copyright (c) {0} PixelMEDIA Inc.", DateTime.Now.Year.ToString());
+			Console.WriteLine("");
+			Console.WriteLine("usage: XliffParser [ARGS]");
+			Console.WriteLine("");
+			Console.WriteLine("The available commands are:");
+			Console.WriteLine("	--help");
+			Console.WriteLine("");
+			Console.WriteLine("See '--help' for more information on commands.");
 		}
 	}
 

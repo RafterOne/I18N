@@ -12,7 +12,7 @@ namespace I18N.Format
 	{
 		private const string FILENAME_SUFFIX = ".properties";
 
-		public void Write(
+		public bool Write(
 			ref XDocument doc,
 			string outputPath,
 			string language,
@@ -45,11 +45,14 @@ namespace I18N.Format
 							writer.WriteLine(exl.Value);
 						}
 					}
+
+					return true;
 				}
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
+				return false;
 			}
 
 		}

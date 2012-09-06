@@ -29,14 +29,19 @@ namespace I18N.Test
 		public void CanParseCommandLineArgs()
 		{
 			// /name=Jack
-			//--name=Jack
-			//--name="Multiple words"
-			//-name 'Jack'
+			// --name=Jack
+			// --name="Multiple words"
+			// -name 'Jack'
 		
 			// String array with 4 elements.
-			string[] args = new string[] { " /name=Jack", "--name=Jack", "--name=\"Multiple words\"", "-name 'Jack'" }; // 1
+			string[] args = new string[] 
+			{ 
+				" /name=Jack", "--name=Jack", 
+				"--name=\"Multiple words\"", 
+				"-name 'Jack'" 
+			};
 			
-			// Command line parsing.
+			// Command line parsing tests.
 			Argument commandLine = new Argument(args);
 			Assert.IsNotNull(commandLine["name"]);
 			string val = commandLine["name"];

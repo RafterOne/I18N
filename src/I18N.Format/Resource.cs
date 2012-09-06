@@ -11,7 +11,7 @@ namespace I18N.Format
 	{
 		private const string FILENAME_SUFFIX = ".resources";
 
-		public void Write(
+		public bool Write(
 			ref XDocument doc, 
 			string outputPath, 
 			string language,
@@ -52,11 +52,13 @@ namespace I18N.Format
 					}
 
 					writer.Generate();
+					return true;
 				}
 			}
 			catch (Exception e)
 			{
 				Console.WriteLine(e.Message);
+				return false;
 			}
 		}
 
@@ -69,6 +71,5 @@ namespace I18N.Format
 			string fileName = prefix + language + FILENAME_SUFFIX;
 			return new ResourceWriter(path + fileName);
 		}
-
 	}
 }
