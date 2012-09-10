@@ -58,7 +58,7 @@ Command-line input example:
 
 Compile the project yourself.
 
-* Fork the project on GitHub.
+* Clone the project from GitHub.
 * Use Visual Studio 2010 or SharpDevelop.
 * In case you do not have Visual Studio 2010 installed download [SharpDevelop][2].
 * Requires the .NET framework installed, recommend 4.0.
