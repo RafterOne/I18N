@@ -86,6 +86,7 @@ namespace I18N.Xliff
 			Console.WriteLine("");
 			Console.WriteLine("The available commands are:");
 			Console.WriteLine("	--help");
+			Console.WriteLine("	--xliff=");
 			Console.WriteLine("");
 			Console.WriteLine("See '--help' for more information on commands.");
 		}

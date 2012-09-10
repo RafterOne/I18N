@@ -8,8 +8,8 @@
     <ProjectGuid>{AD8E2A07-EB7A-4562-BC3D-CD7DDD346E66}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Format</RootNamespace>
-    <AssemblyName>Format</AssemblyName>
+    <RootNamespace>I18N.Format</RootNamespace>
+    <AssemblyName>I18N.Format</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -41,18 +41,19 @@ Download the (.exe) from [Downloads][1]
 
 * Download the latest from Download Packages in ZIP format.
 * Once the contents are downloaded, navigate to the download folder; typically **C:\Users\USERNAME\Downloads**.
-* You will see the contents like **I18N-0.0.1.zip**.
-* Extract it here or to your desired location. For this exercise **C:\Users\USERNAME\Downloads\I18N-0.0.1**.
+* You will see the contents like **I18N-0.0.2.zip**.
+* Extract it here or to your desired location. For this exercise **C:\Users\USERNAME\Downloads\I18N-0.0.2**.
 * Note the folder and path.
  
 Run the XLIF parser at the command-line.
 
 * Open the command line; Start Menu > type 'cmd' into the input > Enter key.
 * The output will be in same directory as the XLF file you passed as the first arguement. In this case where the xlf target language is French Canadian; fr-CA, creating the generated output on the Desktop **C:\Users\USERNAME\Desktop\ApplicationResources.properties_fr-CA**.
+* Arguments are '--help', and '--xliff=' as the fully qualified input filename like **C:\Users\USERNAME\Desktop\example.xlf**.
 
 Command-line input example:
 
-    C:\Users\USERNAME\Downloads\I18N-0.0.1>XliffParser.exe C:\Users\USERNAME\Desktop\example.xlf
+    C:\Users\USERNAME\Downloads\I18N-0.0.2>XliffParser --xliff=C:\Users\USERNAME\Desktop\example.xlf
 
 ### Build from source ###
 

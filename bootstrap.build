@@ -141,6 +141,7 @@
 		<copy todir="${package.dir}\">
 			<fileset basedir="${source.dir}\I18N.Xliff\Bin\${configuration}\">
 				<include name="**\*" />
+                <exclude name="**\*.pdb" unless="${configuration == 'Debug'}" />
 			</fileset>
 		</copy>
         
