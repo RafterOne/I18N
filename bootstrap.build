@@ -4,6 +4,7 @@
 	<property name="base.dir" value="${project::get-base-directory()}" />
 	<property name="source.dir" value="${base.dir}\src" />
 	<property name="package.dir" value="${base.dir}\build" />
+    <property name="bin.dir" value="${base.dir}\bin" />
 	<property name="tools.dir" value="${base.dir}\tools" />
 	<property name="reporting.dir" value="${base.dir}\test-reports" />
 	<property name="coverage.xml" value="NCover.xml" />
@@ -145,6 +146,26 @@
 			</fileset>
 		</copy>
         
+        <delete>
+            <fileset basedir="${bin.dir}\">
+            <include name="**\*" />
+            </fileset>
+        </delete>
+        
+        <copy todir="${bin.dir}\">
+			<fileset basedir="${source.dir}\I18N.Xliff\Bin\${configuration}\">
+				<include name="**\*" />
+                <exclude name="**\*.pdb" unless="${configuration == 'Debug'}" />
+			</fileset>
+		</copy>
+        
+        <copy todir="${bin.dir}\">
+            <fileset basedir="${base.dir}\">
+                <include name="license.txt" />
+                <include name="README.md" />
+            </fileset>
+        </copy>
+
         <zip zipfile="${package.dir}\build.zip">
            <fileset basedir="${package.dir}\">
                 <include name="**/*" />
