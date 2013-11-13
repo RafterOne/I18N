@@ -105,4 +105,8 @@ UpgradeLog*.XML
 [Dd]eploy/
 [Bb]uild/
 
+# Special 
+![Tt]ools/nant-0.92/[Bb]in
+![Tt]ools/NUnit-2.6.3/[Bb]in
+
 
