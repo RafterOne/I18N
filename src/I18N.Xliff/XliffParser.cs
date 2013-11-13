@@ -55,6 +55,7 @@ namespace I18N.Xliff
 
 						Resource res = new Resource();
 						Property pro = new Property();
+						Localizable loc = new Localizable();
 
 						// Write the resource file.
 						if (res.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget))
@@ -66,6 +67,12 @@ namespace I18N.Xliff
 						if (pro.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget))
 						{
 							Console.WriteLine("[INFO]	Generated {0} properties file", language);
+						}
+
+						// Write the Localizable.strings file.
+						if (loc.Write(ref doc, outputPath, language, ref FILENAME_PREFIX, ref ATTRIBUTE_ID, ref xname, ref xtarget))
+						{
+							Console.WriteLine("[INFO]	Generated {0} strings file", language);
 						}
 					}
 				}

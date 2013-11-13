@@ -33,7 +33,7 @@ namespace I18N.Test
 			string prefix = "ApplicationResources_";
 			string id = "id";
 
-			XDocument doc = XDocument.Load("../../../XliffParser/FrenchXliff.xml");
+			XDocument doc = XDocument.Load("../../../I18N.Test/Assets/FrenchXliff.xml");
 			string nameSpace = doc.Root.GetDefaultNamespace().NamespaceName;
 			XName xfile = XName.Get("file", nameSpace);
 			string language = doc.Descendants(xfile).FirstOrDefault().Attribute("target-language").Value.ToString();
