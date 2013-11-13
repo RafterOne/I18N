@@ -1,6 +1,6 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
-[Bb]in/
-[Oo]bj/
+**/src/[Bb]in
+**/src/[Oo]bj
 
 # mstest test results
 TestResults
@@ -77,8 +77,6 @@ publish
 *.Publish.xml
 
 # Others
-[Bb]in
-[Oo]bj
 sql
 TestResults
 [Tt]est[Rr]esult*
@@ -100,13 +98,15 @@ UpgradeLog*.XML
 *.resx
 *.resources
 *.xlf
+*.strings
 
 # NAnt folders
 [Dd]eploy/
 [Bb]uild/
 
-# Special 
+# Special for releases
 ![Tt]ools/nant-0.92/[Bb]in
 ![Tt]ools/NUnit-2.6.3/[Bb]in
-
-
+![Bb]in/
+![Bb]in/*.dll
+![Bb]in/*.exe
