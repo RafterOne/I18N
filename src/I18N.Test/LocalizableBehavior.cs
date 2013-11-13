@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,23 +12,36 @@ namespace I18N.Test
 	using NUnit.Framework;
 
 	[TestFixture]
-	public class ResourceBehavior
+	public class LocalizableBehavior
 	{
+		#region SetUp / TearDown
+
 		[SetUp]
 		public void Init()
-		{
+		{ }
 
+		[TearDown]
+		public void Dispose()
+		{ }
+
+		#endregion
+
+		#region Tests
+
+		[Test]
+		public void Test()
+		{
 		}
 
 		[Test]
-		public void CanCreateInstanceOfResourceObject()
+		public void CanCreateInstanceOfLocalizedObject()
 		{
-			I18N.Format.Resource r = new Resource();
-			Assert.IsNotNull(r);
+			I18N.Format.Localizable l = new Localizable();
+			Assert.IsNotNull(l);
 		}
 
 		[Test]
-		public void CanWriteAndReadFrenchLanguageResourceFile()
+		public void CanWriteLocalizableFile()
 		{
 			string prefix = "ApplicationResources_";
 			string id = "id";
@@ -43,14 +56,14 @@ namespace I18N.Test
 
 			string outputPath = Directory.GetCurrentDirectory();
 
-			I18N.Format.Resource r = new Resource();
-			Assert.IsNotNull(r);
+			I18N.Format.Localizable l = new Localizable();
+			Assert.IsNotNull(l);
 
-			r.Write(ref doc, outputPath, language, ref prefix, ref id, ref xname, ref xtarget);
+			Boolean hasWritten = l.Write(ref doc, outputPath, language, ref prefix, ref id, ref xname, ref xtarget);
 
-			ResourceManager resourceManager = ResourceManager.CreateFileBasedResourceManager("Debug" + prefix + language, "../", null);
-
-			var s = resourceManager.GetString("form.label.username", System.Globalization.CultureInfo.CreateSpecificCulture("fr"));
+			Assert.IsTrue(hasWritten);
 		}
+
+		#endregion
 	}
 }

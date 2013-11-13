@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgumentBehavior.cs" />
+    <Compile Include="LocalizableBehavior.cs" />
     <Compile Include="PropertyBehavior.cs" />
     <Compile Include="ResourceBehavior.cs" />
     <Compile Include="XliffParserBehavior.cs" />

@@ -40,8 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILocalizable.cs" />
     <Compile Include="IProperty.cs" />
     <Compile Include="IResource.cs" />
+    <Compile Include="Localizable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="Resource.cs" />
