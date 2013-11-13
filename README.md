@@ -4,10 +4,19 @@ Built in C#, was part of some internal libraries we have used over time to handl
 
 # Overview #
 
-You really have two options depending how in depth you want to go.
+### 0.0.3+
 
-1. Download the executable (.exe) from [Downloads][1]. Extract the archive and run the utility from the commandline.
-2. Fork the source code, compile it, and build your own release for yourself using some free C# tools or Visual Studio 2010.
+Options for usage .
+
+1. Use the compiled binaries located in the project **bin/** folder.
+2. Run the **build.bat** script to compile and generate the binaries. The script will copy files into a *build/* directory in ZIP format. 
+3. Fork the project, compile it, and build your own release using some free C# tools or Visual Studio 2010+.
+
+### <0.0.2
+
+There is an option to download older compiled versions 0.0.2 and 0.0.1.
+
+1. Download the executable (.exe) from [Downloads][1]. Extract the archive and run the utility from the command-line.
 
 ## XLIFF Format ##
 
@@ -37,35 +46,55 @@ You can run straight from the command-line or build the project from source.
 
 ### Command-line (.exe) ###
 
-Download the (.exe) from [Downloads][1]
-
-* Download the latest from Download Packages in ZIP format.
-* Once the contents are downloaded, navigate to the download folder; typically **C:\Users\USERNAME\Downloads**.
-* You will see the contents like **I18N-0.0.2.zip**.
-* Extract it here or to your desired location. For this exercise **C:\Users\USERNAME\Downloads\I18N-0.0.2**.
-* Note the folder and path.
- 
-Run the XLIF parser at the command-line.
+Run the XLIFF parser at the command-line.
 
 * Open the command line; Start Menu > type 'cmd' into the input > Enter key.
-* The output will be in same directory as the XLF file you passed as the first arguement. In this case where the xlf target language is French Canadian; fr-CA, creating the generated output on the Desktop **C:\Users\USERNAME\Desktop\ApplicationResources.properties_fr-CA**.
+* The output will be in same directory as the XLF file you passed as the first arguement. In this case where the xlf target language is French Canadian; fr-CA, creating the generated output on the Desktop **C:\Users\USERNAME\Desktop\ApplicationResources_fr-CA.properties**.
 * Arguments are '--help', and '--xliff=' as the fully qualified input filename like **C:\Users\USERNAME\Desktop\example.xlf**.
 
 Command-line input example:
 
-    C:\Users\USERNAME\Downloads\I18N-0.0.2>XliffParser --xliff=C:\Users\USERNAME\Desktop\example.xlf
+    $ XliffParser.exe --xliff=C:\Users\USERNAME\Desktop\example.xlf
+
+Will generate the files and following output:
+    
+    ApplicationResources_fr-CA.properties
+    ApplicationResources_fr-CA.resources
+    ApplicationResources_fr-CA.strings
+
+    [INFO]  Generated fr-CA resource file
+    [INFO]  Generated fr-CA properties file
+    [INFO]  Generated fr-CA strings file
+
+The **.strings** file is only generated in 0.0.3+
 
 ### Build from source ###
 
 Compile the project yourself.
 
 * Clone the project from GitHub.
-* Use Visual Studio 2010 or SharpDevelop.
-* In case you do not have Visual Studio 2010 installed download [SharpDevelop][2].
+* Use Visual Studio 2010 or SharpDevelop ([SharpDevelop][2]).
 * Requires the .NET framework installed, recommend 4.0.
 * Open the project SLN file with Visual Studio 2010 or SharpDevelop.
 * Build the project; Debug or Release.
-* The executable will be in \XliffParser\bin\Debug or Release.
+* The executable will be in \XliffParser\bin\Debug or Release\ folder.
+
+## Roadmap ##
+
+* Create a pre-compiled version and bin directory.
+* Add more unit tests.
+* Add options for iOS/Cocoa and NSLocalization files (.string file).
+* Port to a Grunt JS task.
+
+### Creators
+
+[Matthew Teece](http://github.com/mteece)
+[@doctorteece](https://twitter.com/doctorteece)
+
+
+## License
+
+I18N is available under the MIT license. See the LICENSE file for more info.
 
 [1]: https://github.com/PixelMEDIA/I18N/downloads "I18N"
 [2]: http://www.icsharpcode.net/OpenSource/SD/Download/#SharpDevelop4x "SharpDevelop4x"
